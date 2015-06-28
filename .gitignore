@@ -58,6 +58,3 @@ target/
 .pydevproject
 .idea
 Inventory/settings.py
-accounts/migrations/*
-calender/migrations/*
-todo/migrations/*
