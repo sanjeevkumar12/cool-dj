@@ -12,7 +12,6 @@ from django.views.decorators.cache import never_cache
 from django.contrib.auth import get_user_model
 from django.utils import timezone
 from django.contrib import messages
-from django.contrib.auth.forms import PasswordChangeForm
 class LoginRequiredMixin(object):
 
     @method_decorator(login_required)
@@ -27,7 +26,7 @@ class RegisterView(FormView):
         user = form.save(commit=False)
         user.save()
         user.sendactivationmail(self.request)
-        messages.add_message(self.request,messages.INFO,'Registration Successfull ! A email has been sent to %s. Please verify your account.' % (user.email,))
+        messages.add_message(self.request,messages.INFO,__('Registration Successfull ! A email has been sent to %s. Please verify your account.' % (user.email,)))
         return super(RegisterView,self).form_valid(form)
 
 class LoginView(FormView):
@@ -102,11 +101,14 @@ class ProfileView(LoginRequiredMixin,UpdateView):
         return self.request.user
 
     def form_valid(self, form):
-        messages.add_message(self.request,messages.INFO,"Profile upadated successfully.")
+        messages.add_message(self.request,messages.INFO,__("Profile updated successfully."))
         self.request.session.modified = True
         return super(ProfileView,self).form_valid(form)
 
-class ChangePasswordView(LoginRequiredMixin,UpdateView):
-    form_class = PasswordChangeForm
+class ChangePasswordView(LoginRequiredMixin,RedirectView):
+    def get_redirect_url(self, *args, **kwargs):
+        messages.add_message(self.request,messages.INFO,__("Password updated successfully"))
+        return reverse_lazy("accounts:profile")
+
 
 #chandniduggal@hotmail.com/sai_03_04_84
