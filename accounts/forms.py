@@ -41,8 +41,8 @@ class RegistrationForm (forms.ModelForm):
 
 class AuthenticationForm(forms.Form):
 
-    email = forms.EmailField(label= __("Email"),required=True)
-    password = forms.CharField(label=__("Password"), widget=forms.PasswordInput)
+    email = forms.EmailField(label= __("Email"),required=True,error_messages={'required':__('Please enter valid email address.'),'invalid':__('Please enter valid email address.')})
+    password = forms.CharField(label=__("Password"), widget=forms.PasswordInput,error_messages={'required':__('Please enter password.'),'invalid':__('Please enter password.')})
     remember_me = forms.BooleanField(required=False, widget=forms.CheckboxInput())
 
     error_messages = {
@@ -146,3 +146,8 @@ class ImageChangeForm(forms.Form):
                 'invalid': __("Invalid image format."),
                 'invalid_image':__("Invalid image format."),
             })
+
+class ForgotPassword(forms.Form):
+
+
+    pass

@@ -23,14 +23,28 @@
                     <div class="form-group">
                         <label for="exampleInputEmail1">Email address</label>
                         <input type="email" class="form-control" name="{{ form.email.name }}" value="{{ form.email.value|default_if_none:'' }}"  id="exampleInputEmail1" placeholder="Enter email">
+                        {% if form.email.errors %}
+                            {% for error in form.email.errors %}
+                                <div class="isa_error">
+                                    <i class="fa fa-times-circle"></i>{{ error|escape }}
+                                </div>
+                            {% endfor %}
+                        {% endif %}
                     </div>
                     <div class="form-group">
                         <label for="exampleInputPassword1">Password</label>
                         <input type="password" class="form-control" name="{{ form.password.name }}" id="exampleInputPassword1" value="" placeholder="Password"/>
+                        {% if form.password.errors %}
+                            {% for error in form.password.errors %}
+                                <div class="isa_error">
+                                    <i class="fa fa-times-circle"></i>{{ error|escape }}
+                                </div>
+                            {% endfor %}
+                        {% endif %}
                     </div>
                     <div class="checkbox">
                         <label>
-                            <input type="checkbox" name="{{ form.remember_me.name }}"> Check me out
+                            <input type="checkbox" name="{{ form.remember_me.name }}" {% if form.remember_me.value  %} checked {% endif %}/> Check me out
                         </label>
                     </div>
                     <button type="submit" class="btn btn-default">Submit</button>

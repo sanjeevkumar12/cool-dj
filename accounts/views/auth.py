@@ -42,3 +42,5 @@ class LoginView(FormView):
         if(self.request.POST.get('remember_me',None)):
             self.request.session.set_expiry(0)
         return super(LoginView,self).form_valid(form)
+    def form_invalid(self, form):
+        return super(LoginView,self).form_invalid(form)
