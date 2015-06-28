@@ -1,7 +1,7 @@
 from django.conf.urls import patterns, include, url
 from django.conf import settings
 from django.contrib import admin
-from accounts.views import HomeView
+from accounts.views.profile import HomeView
 urlpatterns = patterns('',
     url(r'^$', HomeView.as_view(), name='home'),
     url(r'^accounts/todo/',include('todo.urls',namespace='todo')),
