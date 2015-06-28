@@ -13,10 +13,9 @@ develop-eggs/
 dist/
 downloads/
 eggs/
-<<<<<<< HEAD
-=======
+
 .eggs/
->>>>>>> 32ba5eed89de19f533b8dc70ccbf85f6557d1ffc
+
 lib/
 lib64/
 parts/
@@ -40,17 +39,10 @@ pip-delete-this-directory.txt
 htmlcov/
 .tox/
 .coverage
-<<<<<<< HEAD
-.cache
-nosetests.xml
-coverage.xml
-=======
-.coverage.*
 .cache
 nosetests.xml
 coverage.xml
 *,cover
->>>>>>> 32ba5eed89de19f533b8dc70ccbf85f6557d1ffc
 
 # Translations
 *.mo
@@ -64,12 +56,8 @@ docs/_build/
 
 # PyBuilder
 target/
-<<<<<<< HEAD
-
 # Eclipse
 .project
 .pydevproject
 .idea
 Inventory/settings.py
-=======
->>>>>>> 32ba5eed89de19f533b8dc70ccbf85f6557d1ffc
