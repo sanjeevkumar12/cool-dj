@@ -1,4 +1,5 @@
 {% extends "includes/default.html" %}
+{% block pagetitle %} My Profile {% endblock %}
 {% block breadcrum %}
     <ul class="breadcrumb">
         <li><a href="#">Home</a></li>
@@ -8,85 +9,90 @@
 
 {% endblock %}
 {%  block content %}
-<div class="container">
-     <h1 class="">Edit Profile</h1>
-
-    <hr class="">
-    <div class="row">
-        <!-- left column -->
-        <div class="col-md-2 col-md-offset-2">
-            <div class="text-center">
-                <img src="//placehold.it/100" class="avatar img-circle" alt="avatar">
-                 <h6 class="">Upload a different photo...</h6>
-
-                <input class="form-control" type="file">
-            </div>
+<div id="loginbox" class="mainbox col-md-10 col-md-offset-1 col-sm-12 col-sm-offset-0">
+    <div class="panel panel-danger">
+        <div class="panel-heading">
+                EDIT PROFILE
         </div>
-        <!-- edit form column -->
-        <div class="col-md-6 personal-info">
-            <div style="display: none;" class="alert alert-info alert-dismissable"> <a class="panel-close close" data-dismiss="alert">×</a>  <i class="fa fa-coffee"></i>
-This
-                is an <strong class="">.alert</strong>. Use this to show important messages
-                to the user.</div>
-             <h3 class="">Personal info</h3>
-
-            <form class="form-horizontal" role="form" method="post">
-                {% csrf_token %}
-
-                <div class="form-group">
-                    <label class="col-lg-3 control-label">Email:</label>
-                    <div class="col-lg-8">
-                        <input class="form-control" disabled="disabled" name="{{ form.email.name }}" value="{{ form.email.value|default_if_none:'' }}" type="text">
-                    </div>
-
-
-
-                </div>
-
-                <div class="form-group">
-                    <label class="col-lg-3 control-label">First name:</label>
-                    <div class="col-lg-8">
-                        <input class="form-control" name="{{ form.firstname.name }}" value="{{ form.firstname.value|default_if_none:'' }}" type="text">
-                        {% if form.firstname.errors %}
-
-                                {% for error in form.firstname.errors %}
-                                    <div class="isa_error">
-                                        <i class="fa fa-times-circle"></i>
-                                        {{ error|escape }}
-                                    </div>
-
-                                {% endfor %}
-
-                            {% endif %}
+        <div class="panel-body">
+            <div class="row">
+                <!-- left column -->
+                <div class="col-md-3 col-md-offset-1">
+                    <div class="text-center">
+                        <h3>Profile Pic</h3>
+                        <hr/>
+                        <div class="form-group">
+                            <img src="//placehold.it/100" class="avatar img-circle" alt="avatar">
+                        </div>
+                        <div class="form-group">
+                            <a class="btn btn-info" value="Update" type="" href="changepassword.html">Change Image</a>
+                        </div>
                     </div>
                 </div>
-                <div class="form-group">
-                    <label class="col-lg-3 control-label">Last name:</label>
-                    <div class="col-lg-8">
-                        <input class="form-control" name="{{ form.lastname.name }}" value="{{ form.lastname.value|default_if_none:'' }}" type="text">
+                <!-- edit form column -->
+                <div class="col-md-6 personal-info  col-md-offset-1">
+                    <div class="text-center">
+                        <h3>Personal Info</h3>
+                        <hr/>
                     </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-lg-3 control-label">Company:</label>
-                    <div class="col-lg-8">
-                                                <textarea type="textarea" id="user_bio" name="user_bio" placeholder=""
-                                  class="form-control input">{{ form.user_bio.value |default_if_none:'' }}</textarea>
+                    <form class="form-horizontal" role="form" method="post">
+                        {% csrf_token %}
 
-                        <p class="help-block"></p>
+                        <div class="form-group">
+                            <label class="col-lg-4 control-label">Email:</label>
+                            <div class="col-lg-8">
+                                {% if form.email.errors %}
+                                        {% for error in form.email.errors %}
+                                            <div class="isa_error">
+                                                <i class="fa fa-times-circle"></i>
+                                                {{ error|escape }}
+                                            </div>
+                                        {% endfor %}
+                                    {% endif %}
+                                <input class="form-control" readonly     name="{{ form.email.name }}" value="{{ form.email.value|default_if_none:'' }}" type="text">
+                            </div>
+                        </div>
 
-                    </div>
+                        <div class="form-group">
+                            <label class="col-lg-4 control-label">First name:</label>
+                            <div class="col-lg-8">
+                                <input class="form-control" name="{{ form.firstname.name }}" value="{{ form.firstname.value|default_if_none:'' }}" type="text">
+                                {% if form.firstname.errors %}
+                                    {% for error in form.firstname.errors %}
+                                        <div class="isa_error">
+                                            <i class="fa fa-times-circle"></i>
+                                            {{ error|escape }}
+                                        </div>
+                                    {% endfor %}
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-4 control-label">Last name:</label>
+                            <div class="col-lg-8">
+                                <input class="form-control" name="{{ form.lastname.name }}" value="{{ form.lastname.value|default_if_none:'' }}" type="text">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-4 control-label">Your Brief Intro:</label>
+                            <div class="col-lg-8">
+                                <textarea type="textarea" id="user_bio" rows="3" name="user_bio" placeholder=" Your breif info " class="form-control input">{{ form.user_bio.value |default_if_none:'' }}</textarea>
+                                <p class="help-block"></p>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-8 col-xs-offset-4 text-center">
+                                <input class="btn btn-default" value="Update" type="submit"> <span class=""> &nbsp;</span><span class=""> OR </span><span class=""> &nbsp;</span>
+                                <a class="btn btn-info" value="Update" type="" href="changepassword.html">Change Password</a>
+                            </div>
+                        </div>
+                        <hr/>
+                    </form>
                 </div>
-                <div class="form-group">
-                    <label class="col-md-3 control-label"></label>
-                    <div class="col-md-8">
-                        <input class="btn btn-primary" value="Save Changes" type="submit"> <span class=""></span>
-
-                        <input class="btn btn-default" value="Cancel" type="reset">
-                    </div>
-                </div>
-            </form>
+            </div>
         </div>
     </div>
 </div>
-<hr class="">
 {% endblock %}

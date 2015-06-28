@@ -88,7 +88,6 @@ class User(AbstractBaseUser,PermissionsMixin):
 
 
 
-
     USERNAME_FIELD = 'email'
     class Meta:
         verbose_name = __('user')

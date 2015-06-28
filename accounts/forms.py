@@ -130,7 +130,27 @@ class UserChangeForm(forms.ModelForm):
 
     class Meta:
         model = get_user_model()
-        fields = ('firstname','lastname','user_bio',)
+        fields = ('email','firstname','lastname','user_bio',)
         widgets = {
             'user_bio': forms.Textarea(attrs={'cols': 80, 'rows': 20}),
         }
+
+    def clean_email(self):
+        if self.instance:
+            return self.instance.email
+        else:
+            return self.fields['email']
+class ImageChangeForm(forms.Form):
+    pass
+    #profilepic = forms.ImageField(="users/profile/images/")
+
+class ChangePasswordForm (forms.Form):
+    password1 = forms.CharField(label = __('Password'),widget=forms.PasswordInput,min_length=6)
+    password2 = forms.CharField(label = __('Confirm Password'),widget=forms.PasswordInput)
+    def clean_password2(self):
+        password1 = self.cleaned_data['password1']
+        password2 = self.cleaned_data['password2']
+        if password1 != password2:
+            raise forms.ValidationError(__('Passwords donot match.'))
+        return password2
+
