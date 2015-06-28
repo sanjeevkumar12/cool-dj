@@ -42,12 +42,17 @@
                             {% endfor %}
                         {% endif %}
                     </div>
-                    <div class="checkbox">
-                        <label>
-                            <input type="checkbox" name="{{ form.remember_me.name }}" {% if form.remember_me.value  %} checked {% endif %}/> Check me out
-                        </label>
+                    <div class="form-group">
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" name="{{ form.remember_me.name }}" {% if form.remember_me.value  %} checked {% endif %}/> Remember me
+                            </label>
+                        </div>
                     </div>
-                    <button type="submit" class="btn btn-default">Submit</button>
+                    <div class="row text-center">
+                        <button type="submit" class="btn btn-default">Submit</button><span></span> <a class="btn btn-info" href="{% url "accounts:forgotpassword" %}">Forgot Password</a>
+                    </div>
+
 
                 </form>
             </div>

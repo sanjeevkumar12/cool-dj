@@ -9,5 +9,7 @@ class ChangePasswordView(LoginRequiredMixin,RedirectView):
         messages.add_message(self.request,messages.INFO,__("Password updated successfully"))
         return reverse_lazy("accounts:profile")
 
-class ForgotpasswordView(FormView):
-    pass
+class ForgotpasswordView(RedirectView):
+    def get_redirect_url(self, *args, **kwargs):
+        messages.add_message(self.request,messages.INFO,__("Your password has been reset.Please check email for more instructions."))
+        return reverse_lazy("accounts:login")
