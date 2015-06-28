@@ -11,4 +11,5 @@ urlpatterns = [
         url(r'^confirm/(?P<userslug>[-\w]+)/(?P<activationkey>[-\w]+)$',views.EmailConfirmation.as_view(),name='emailconfirmation'),
         url(r'^password/post-passwordchange$',views.ChangePasswordView.as_view(),name='postpasswordchange'),
         url(r'^password/changepassword$', 'django.contrib.auth.views.password_change', {'post_change_redirect' : reverse_lazy('accounts:postpasswordchange'),'template_name': 'accounts/changepassword.html'},name='changepassword'),
+        url(r'^profieimage',views.ChangeprofilePic.as_view(),name='changeprofilepic'),
 ]

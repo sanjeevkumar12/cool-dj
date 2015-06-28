@@ -141,5 +141,8 @@ class UserChangeForm(forms.ModelForm):
         else:
             return self.fields['email']
 class ImageChangeForm(forms.Form):
-    pass
-    #profilepic = forms.ImageField(="users/profile/images/")
+    profilepic = forms.ImageField(error_messages= {
+                'required': __("Please upload a image."),
+                'invalid': __("Invalid image format."),
+                'invalid_image':__("Invalid image format."),
+            })

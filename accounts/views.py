@@ -109,6 +109,16 @@ class ChangePasswordView(LoginRequiredMixin,RedirectView):
     def get_redirect_url(self, *args, **kwargs):
         messages.add_message(self.request,messages.INFO,__("Password updated successfully"))
         return reverse_lazy("accounts:profile")
+class ChangeprofilePic(LoginRequiredMixin,FormView):
+    form_class = ImageChangeForm
+    success_url = reverse_lazy("accounts:profile")
+    template_name = "accounts/changeprofilepic.html"
 
-
+    def form_valid(self, form):
+        usermodel = get_user_model()
+        user = usermodel.objects.get(pk=self.request.user.pk)
+        profilepic = form.cleaned_data['profilepic']
+        user.image = profilepic
+        user.save()
+        return super(ChangeprofilePic,self).form_valid(form)
 #chandniduggal@hotmail.com/sai_03_04_84
