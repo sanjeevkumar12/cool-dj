@@ -25,7 +25,7 @@
                             <img src="{{ MEDIA_URL }}{{ user.image }}" class="avatar img-circle" alt="avatar">
                         </div>
                         <div class="form-group">
-                            <a class="btn btn-info" value="Update" type="" href="changepassword.html">Change Image</a>
+                            <a class="btn btn-info" value="Update" type="" href="{% url "accounts:changeprofilepic" %} ">Change Image</a>
                         </div>
                     </div>
                 </div>
