@@ -1,0 +1,44 @@
+{% extends "includes/default.html" %}
+{% block content %}{{ object_list  }}
+    <h2>Pinterest Responsive Grid</h2>
+
+    <p>Best viewed <a href="http://bootsnipp.com/iframe/Zkk0O" target="_blank">full screen</a>
+    </p>
+    <hr>
+    <section id="pinBoot">
+    {% for todoitem in object_list %}
+      <article class="white-panel">
+
+        <h4><a href="{% url 'todo:listdetail' todoitem.todolist.slug todoitem.slug %}">{{ todoitem.title }} 1</a></h4>
+        <p>{{ todoitem.description }}.</p>
+      </article>
+
+    {% endfor %}
+
+    </section>
+
+
+    <hr>
+
+
+
+<section class="todo">
+      <ul class="todo-controls">
+        <li><a href="index.html" class="icon-add">Add</a></li>
+        <li><a href="index.html" class="icon-delete">Delete</a></li>
+        <li class="right"><a href="index.html" class="icon-settings">Settings</a></li>
+      </ul>
+
+      <ul class="todo-list">
+        <li class="done"><a href="index.html" class="toggle">Toggle</a> Find an idea.</li>
+        <li><a href="index.html" class="toggle">Toggle</a> Build it!</li>
+        <li><a href="index.html" class="toggle">Toggle</a> Ship it...<br>with a line break!</li>
+      </ul>
+
+      <ul class="todo-pagination">
+        <li class="previous"><span><i class="icon-previous"></i> Previous</span></li>
+        <li class="next"><a href="index.html">Next <i class="icon-next"></i></a></li>
+      </ul>
+</section>
+
+{% endblock %}

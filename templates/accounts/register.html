@@ -1,0 +1,138 @@
+{% extends 'includes/default.html' %}
+{% block pagetitle %} User Register {% endblock %}
+{% block breadcrum %}
+    <ul class="breadcrumb">
+        <li><a href="/">Home</a></li>
+        <li class="active">Sign-Up</li>
+    </ul>
+{% endblock %}
+{% block content %}
+    <div id="loginbox" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+    <div class="panel panel-danger">
+        <div class="panel-heading">
+                SIGN-UP
+        </div>
+        <div class="panel-body">
+                <form class="form-horizontal" action="" method="POST">
+                    {% csrf_token %}
+                    <fieldset>
+                        <div class="row">
+                            <div class="col-xs-6 col-md-6">
+                                <div class="control-group">
+                                    <label class="control-label" for="firstname">First Name</label>
+                                    <div class="controls">
+                                        <input type="text" id="firstname" name="{{ form.firstname.name }}" placeholder="First Name here...."                                   value="{{ form.firstname.value|default_if_none:'' }}"
+                                               class="form-control input"/>
+                                        {% if form.firstname.errors %}
+
+                                        {% for error in form.firstname.errors %}
+                                            <div class="isa_error">
+                                                <i class="fa fa-times-circle"></i>
+                                                {{ error|escape }}
+                                            </div>
+
+                                        {% endfor %}
+
+                                    {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-6 col-md-6">
+                                <div class="control-group">
+                                    <label class="control-label" for="lastname">Last Name</label>
+
+                                    <div class="controls">
+                                        <input type="text" id="lastname" name="lastname" placeholder="Last Name  here" value="{{ form.lastname.value |default_if_none:'' }}" class="form-control input"/>
+                                        {% if form.lastname.errors %}
+                                        {% for error in form.lastname.errors %}
+                                            <div class="isa_error">
+                                                <i class="fa fa-times-circle"></i>
+                                                {{ error|escape }}
+                                            </div>
+                                        {% endfor %}
+                                    {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="control-group required">
+                            <label class="control-label" for="email">E-mail</label>
+
+                            <div class="controls">
+                                <input type="email" id="email" name="email" value="{{ form.email.value |default_if_none:'' }}" placeholder="Enter a  valid email address " class="form-control input" aria-describedby="inputGroupSuccess4Status">
+
+                                {% if form.email.errors %}
+
+                                        {% for error in form.email.errors %}
+                                            <div class="isa_error">
+                                                <i class="fa fa-times-circle"></i>
+                                                {{ error|escape }}
+                                            </div>
+                                        {% endfor %}
+
+                                    {% endif %}
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class="col-xs-6 col-md-6">
+                                <div class="control-group">
+                                    <label class="control-label" for="password1">Password</label>
+
+                                    <div class="controls">
+                                        <input type="password" id="password1" name="password1" placeholder="Your Password" class="form-control input">
+                                        {% if form.password1.errors %}
+
+                                        {% for error in form.password1.errors %}
+                                            <div class="isa_error">
+                                                <i class="fa fa-times-circle"></i>
+                                                {{ error|escape }}
+                                            </div>
+                                        {% endfor %}
+
+                                    {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-6 col-md-6">
+                                <div class="control-group">
+                                    <label class="control-label" for="password2">Password (Confirm)</label>
+
+                                    <div class="controls">
+                                        <input type="password" id="password2" name="password2" placeholder="Confirm Password" class="form-control">
+                                        {% if form.password2.errors %}
+
+                                        {% for error in form.password2.errors %}
+                                            <div class="isa_error">
+                                                <i class="fa fa-times-circle"></i>
+                                                {{ error|escape }}
+                                            </div>
+                                        {% endfor %}
+
+                                    {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label" for="user_bio">Your Brief Intro</label>
+
+                            <div class="controls">
+                                <textarea type="textarea" id="user_bio" name="user_bio" placeholder="Breif Introduction" class="form-control">{{ form.user_bio.value |default_if_none:'' }}</textarea>
+
+                                <p class="help-block"></p>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <div class="controls">
+                                <button class="btn btn-default">Register</button>
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+    </div>
+    </div>
+{% endblock %}

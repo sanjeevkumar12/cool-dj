@@ -1,0 +1,10 @@
+{% extends "includes/email.html" %}
+{% load staticfiles %}
+{% block content %}
+    <h3>Hi {{ firstname }}{{ lastname }}</h3>
+    <p>
+        Your account registration is one step away . Please verify your account .
+        <br/>
+        Please cleck  <a href="{{ verifyurl }}" class="btn btn-success">here.</a>
+    </p>
+{% endblock %}

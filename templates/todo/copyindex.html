@@ -1,0 +1,91 @@
+{% extends "includes/default.html" %}
+{% block content %}{{ object_list  }}
+
+    {% for todolist in object_list %}
+        <article class="white-panel" style="min-width: 200px">
+        <h4><a href="#">{{ todolist.title }}</a></h4>
+        <p>{{ todolist.description }}.</p>
+      </article>
+    {% endfor %}
+    <h2>Pinterest Responsive Grid</h2>
+
+    <p>Best viewed <a href="http://bootsnipp.com/iframe/Zkk0O" target="_blank">full screen</a>
+    </p>
+    <hr>
+    <section id="pinBoot">
+
+      <article class="white-panel"><img src="http://i.imgur.com/sDLIAZD.png" alt="">
+        <h4><a href="#">Title 1</a></h4>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+          irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+      </article>
+
+      <article class="white-panel"> <img src="http://i.imgur.com/8lhFhc1.gif" alt="">
+        <h4><a href="#">Title 2</a></h4>
+        <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+      </article>
+
+      <article class="white-panel">
+        <h4><a href="#">Title 3</a></h4>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+          irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+      </article>
+
+
+      <article class="white-panel"> <img src="http://i.imgur.com/3gXW3L3.jpg" alt="">
+        <h4><a href="#">Title 4</a></h4>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+          irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+      </article>
+
+      <article class="white-panel"> <img src="http://i.imgur.com/o2RVMqm.jpg" alt="">
+        <h4><a href="#">Title 5</a></h4>
+        <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+      </article>
+
+      <article class="white-panel"> <img src="http://i.imgur.com/kFFpuKA.jpg" alt="">
+        <h4><a href="#">Title 6</a></h4>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+          irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+      </article>
+
+
+
+      <article class="white-panel"><img src="http://i.imgur.com/E9RmLPA.jpg" alt="">
+        <h4><a href="#">Title 7</a></h4>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+          irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+      </article>
+
+      <article class="white-panel"> <img src="http://i.imgur.com/8lhFhc1.gif" alt="">
+        <h4><a href="#">Title 8</a></h4>
+        <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+      </article>
+
+    </section>
+
+
+    <hr>
+
+
+
+<section class="todo">
+      <ul class="todo-controls">
+        <li><a href="index.html" class="icon-add">Add</a></li>
+        <li><a href="index.html" class="icon-delete">Delete</a></li>
+        <li class="right"><a href="index.html" class="icon-settings">Settings</a></li>
+      </ul>
+
+      <ul class="todo-list">
+        <li class="done"><a href="index.html" class="toggle">Toggle</a> Find an idea.</li>
+        <li><a href="index.html" class="toggle">Toggle</a> Build it!</li>
+        <li><a href="index.html" class="toggle">Toggle</a> Ship it...<br>with a line break!</li>
+      </ul>
+
+      <ul class="todo-pagination">
+        <li class="previous"><span><i class="icon-previous"></i> Previous</span></li>
+        <li class="next"><a href="index.html">Next <i class="icon-next"></i></a></li>
+      </ul>
+</section>
+
+{% endblock %}
