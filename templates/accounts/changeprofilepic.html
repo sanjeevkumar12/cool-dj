@@ -1,14 +1,15 @@
 {% extends "includes/default.html" %}
+{% block pagetitle %} Profile Pic {% endblock %}
 {%  block content %}
     <div id="loginbox" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-4">
     <div class="panel panel-danger">
         <div class="panel-heading">
-                Change Password
+                Update Profile Pic
         </div>
         <div class="panel-body">
                 <form action="" method="post" enctype="multipart/form-data">
                     {% csrf_token %}
-                    <div class="col-md-4 col-md-offset-3">
+                    <div class="col-md-4 col-md-offset-4">
                     <div class="text-center">
                         <h3>Profile Pic</h3>
 
@@ -18,21 +19,34 @@
 
                     </div>
                 </div>
-                    <div class="form-group">
+                    <div class="form-group ">
 
-                        
-                        <input class="form-control" type="file" name="{{ form.profilepic.name }}" id="old_password_id"/>
+                        <div class="row text-center col-xs-4 col-xs-offset-4">
+                            <input class="form-control btn btn-info" type="file" name="{{ form.profilepic.name }}"  id="profilepic_id"/>
+
+                        </div>
+                        <div class="row col-xs-10 col-xs-offset-1">
                         {% if form.profilepic.errors %}
-                            {% for error in form.profilepic.errors %}
-                                <div class="isa_error">
-                                    <i class="fa fa-times-circle"></i>
-                                    {{ error|escape }}
-                                </div>
-                            {% endfor %}
-                        {% endif %}
+                                {% for error in form.profilepic.errors %}
+                                    <div class="isa_error">
+                                        <i class="fa fa-times-circle"></i>
+                                        {{ error|escape }}
+                                    </div>
+                                {% endfor %}
+                            {% endif %}
+                        </div>
+                        <div class="row col-xs-10 col-xs-offset-1 text-center">
+                             <div class="form-group ">
+                                 <br/>
+                                 </br/>
+                            <button type="submit" class="btn btn-default ">Submit</button>
+                                 </div>
+                        </div>
+                    </div>
+                    <div class="row form-group text-center">
+
                     </div>
 
-                    <button type="submit" class="btn btn-default">Submit</button>
                 </form>
             </div>
         </div>
