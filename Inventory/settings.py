@@ -106,9 +106,9 @@ STATICFILES_DIRS = (
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
-EMAIL_HOST_USER = 'sanjumassal@gmail.com'
-EMAIL_HOST_PASSWORD = 'mayadevi326#'
-DEFAULT_FROM_EMAIL = 'sanjumassal@gmail.com'
-DEFAULT_TO_EMAIL = 'sanjumassal@gmail.com'
+EMAIL_HOST_USER = ''
+EMAIL_HOST_PASSWORD = ''
+DEFAULT_FROM_EMAIL = ''
+DEFAULT_TO_EMAIL = ''
 
 HOSTNAME = 'http://127.0.0.1:8000'
