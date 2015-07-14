@@ -1,4 +1,4 @@
-﻿
+
 @import url(http://fonts.googleapis.com/css?family=Roboto); /* FREE GOOGLE FONT */
 
 body {
@@ -610,11 +610,7 @@ color: #999;
   max-width: 100%;
   width: 100%;
 }
-img {
-  width: 100%;
-  max-width: 100%;
-  height: auto;
-}
+
 .white-panel {
   position: absolute;
   background: white;
@@ -686,4 +682,7 @@ stylize any heading tags withing white-panel below
     background: white;
     cursor: inherit;
     display: block;
+}
+.avatar{
+	width:95%
 }

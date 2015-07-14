@@ -6,7 +6,7 @@ from ..forms import ImageChangeForm,UserChangeForm
 from django.views.generic import FormView
 from django.contrib.auth import get_user_model
 from django.contrib import messages
-
+from django.utils.translation import ugettext_lazy as __
 
 class DashBoardView(LoginRequiredMixin,TemplateView):
     template_name = 'accounts/dashboard.html'
@@ -27,6 +27,7 @@ class ChangeprofilePic(LoginRequiredMixin,FormView):
         profilepic = form.cleaned_data['profilepic']
         user.image = profilepic
         user.save()
+        messages.add_message(self.request,messages.INFO,__("Profile image updated successfully"))
         return super(ChangeprofilePic,self).form_valid(form)
 
 class ProfileView(LoginRequiredMixin,UpdateView):
