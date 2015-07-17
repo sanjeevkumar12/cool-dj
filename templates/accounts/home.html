@@ -1,1 +1,162 @@
 {% extends "includes/default.html" %}
+
+{% load static from staticfiles %}
+
+{%block extracss %}
+
+	 <link href="{%  static "assets/css/todolist.css" %}"  rel="stylesheet"/>
+{% endblock %}
+
+
+{% block content %}
+
+				<div class="row">
+                  <div class="col-md-12">
+                      <section class="panel tasks-widget">
+                          <header class="panel-heading">
+                              Todo list
+                          </header>
+                          <div class="panel-body">
+
+                              <div class="task-content">
+								<div class="row">
+									<div class='col-md-10 col-md-offset-1'>
+										<div class='growldiv ' style='display:block'><img class='square' src="{% static "assets/img/trashsm.png" %}"/></div>
+									</div>
+									<div style='clear:both'></div>
+									<div class='col-md-10 col-md-offset-1'>
+										<ul class="task-list">
+                                      	<li>
+                                          <div class="task-checkbox">
+                                              <input type="checkbox" class="list-child" value="">
+                                          </div>
+                                          <div class="task-title">
+                                              <span class="task-title-sp">Flatlab is Modern Dashboard</span>
+                                              <span class="badge badge-sm label-success">2 Days</span>
+                                              <div class="pull-right hidden-phone">
+                                                  <button class="btn btn-success btn-xs"><i class=" fa fa-check"></i></button>
+                                                  <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
+                                                  <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>
+                                              </div>
+                                          </div>
+                                      </li>
+                                      <li>
+                                          <div class="task-checkbox">
+                                              <input type="checkbox" class="list-child" value="">
+                                          </div>
+                                          <div class="task-title">
+                                              <span class="task-title-sp">Fully Responsive &amp; Bootstrap 3.0.2 Compatible</span>
+                                              <span class="badge badge-sm label-danger">Done</span>
+                                              <div class="pull-right hidden-phone">
+                                                  <button class="btn btn-success btn-xs"><i class=" fa fa-check"></i></button>
+                                                  <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
+                                                  <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>
+                                              </div>
+                                          </div>
+                                      </li>
+                                      <li>
+                                          <div class="task-checkbox">
+                                              <input type="checkbox" class="list-child" value="">
+                                          </div>
+                                          <div class="task-title">
+                                              <span class="task-title-sp">Daily Standup Meeting</span>
+                                              <span class="badge badge-sm label-warning">Company</span>
+                                              <div class="pull-right hidden-phone">
+                                                  <button class="btn btn-success btn-xs"><i class=" fa fa-check"></i></button>
+                                                  <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
+                                                  <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>
+                                              </div>
+                                          </div>
+                                      </li>
+                                      <li>
+                                          <div class="task-checkbox">
+                                              <input type="checkbox" class="list-child" value="">
+                                          </div>
+                                          <div class="task-title">
+                                              <span class="task-title-sp">Write well documentation for this theme</span>
+                                              <span class="badge badge-sm label-primary">3 Days</span>
+                                              <div class="pull-right hidden-phone">
+                                                  <button class="btn btn-success btn-xs"><i class=" fa fa-check"></i></button>
+                                                  <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
+                                                  <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>
+                                              </div>
+                                          </div>
+                                      </li>
+                                      <li>
+                                          <div class="task-checkbox">
+                                              <input type="checkbox" class="list-child" value="">
+                                          </div>
+                                          <div class="task-title">
+                                              <span class="task-title-sp">We have a plan to include more features in future update</span>
+                                              <span class="badge badge-sm label-info">Tomorrow</span>
+                                              <div class="pull-right hidden-phone">
+                                                  <button class="btn btn-success btn-xs"><i class=" fa fa-check"></i></button>
+                                                  <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
+                                                  <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>
+                                              </div>
+                                          </div>
+                                      </li>
+                                      <li>
+                                          <div class="task-checkbox">
+                                              <input type="checkbox" class="list-child" value="">
+                                          </div>
+                                          <div class="task-title">
+                                              <span class="task-title-sp">Don't be hesitate to purchase this Dashbord</span>
+                                              <span class="badge badge-sm label-inverse">Now</span>
+                                              <div class="pull-right">
+                                                  <button class="btn btn-success btn-xs"><i class=" fa fa-check"></i></button>
+                                                  <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
+                                                  <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>
+                                              </div>
+                                          </div>
+                                      </li>
+                                      <li>
+                                          <div class="task-checkbox">
+                                              <input type="checkbox" class="list-child" value="">
+                                          </div>
+                                          <div class="task-title">
+                                              <span class="task-title-sp">Code compile and upload</span>
+                                              <span class="badge badge-sm label-success">2 Days</span>
+                                              <div class="pull-right hidden-phone">
+                                                  <button class="btn btn-success btn-xs"><i class=" fa fa-check"></i></button>
+                                                  <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
+                                                  <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>
+                                              </div>
+                                          </div>
+                                      </li>
+                                      <li>
+                                          <div class="task-checkbox">
+                                              <input type="checkbox" class="list-child" value="">
+                                          </div>
+                                          <div class="task-title">
+                                              <span class="task-title-sp">Tell your friends to buy this dashboad</span>
+                                              <span class="badge badge-sm label-danger">Now</span>
+                                              <div class="pull-right hidden-phone">
+                                                  <button class="btn btn-success btn-xs"><i class=" fa fa-check"></i></button>
+                                                  <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
+                                                  <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>
+                                              </div>
+                                          </div>
+                                      </li>
+                                      
+                                  </ul>
+									</div>
+									<div class='col-md-2'>
+									
+									</div>
+								
+								</div>
+                                  
+                              </div>
+
+                              <div class=" add-task-row">
+                                  <a class="btn btn-success btn-sm pull-left" href="#">Add New Tasks</a>
+                                  <a class="btn btn-default btn-sm pull-right" href="#">See All Tasks</a>
+                              </div>
+                          </div>
+                      </section>
+                  </div>
+              </div>
+
+
+{% endblock %}

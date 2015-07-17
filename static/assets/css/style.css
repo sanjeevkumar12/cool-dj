@@ -1,4 +1,4 @@
-﻿
+
 @import url(http://fonts.googleapis.com/css?family=Roboto); /* FREE GOOGLE FONT */
 
 body {
@@ -610,11 +610,7 @@ color: #999;
   max-width: 100%;
   width: 100%;
 }
-img {
-  width: 100%;
-  max-width: 100%;
-  height: auto;
-}
+
 .white-panel {
   position: absolute;
   background: white;
@@ -687,6 +683,7 @@ stylize any heading tags withing white-panel below
     cursor: inherit;
     display: block;
 }
+<<<<<<< HEAD
 .inside {
   margin-top: 20px;
   margin-bottom: 20px;
@@ -820,3 +817,8 @@ stylize any heading tags withing white-panel below
     vertical-align: bottom;
   }
 }
+=======
+.avatar{
+	width:95%
+}
+>>>>>>> 10d33ea367f0114aef82317d09ae9555936665e2

@@ -57,7 +57,10 @@ class User(AbstractBaseUser,PermissionsMixin):
     def save(self,force_insert=False, force_update=False, using=None,update_fields=None):
         if not self.slug:
             lenslug = 210
-            sludata = self.firstname + ' ' + self.lastname
+            if self.firstname:
+                sludata = self.firstname + ' ' + self.lastname
+            else:
+                sludata = self.email
             if not len(sludata) > 210:
                 lenslug = len(sludata)
             self.slug = slugify(sludata)[0:lenslug]
@@ -82,7 +85,7 @@ class User(AbstractBaseUser,PermissionsMixin):
             'verifyurl':request.build_absolute_uri(confirmurl)
         }
         message = get_template('accounts/email/regconfirm.html').render(Context(data))
-        email = EmailMessage(email_subject,message,'sanjumassal@gmail.com',['sanjeevmassal@gmail.com'])
+        email = EmailMessage(email_subject,message,'sanjumassal@gmail.com',['sanjeev.kumar.12@netsolutionsindia.com'])
         email.content_subtype = 'html'
         email.send()
 
