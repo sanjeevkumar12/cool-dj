@@ -44,6 +44,7 @@ INSTALLED_APPS = (
     'debug_toolbar',
     'accounts',
     'todo',
+    'blog',
 )
 AUTH_USER_MODEL = 'accounts.User'
 

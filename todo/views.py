@@ -20,3 +20,10 @@ class ToDoItemDetailView(DetailView):
 
 class TodoEditView(FormView):
     template_name = 'todo/edittodo.html'
+
+class TodoItemCreateView(FormView):
+    template_name = "todo/create.html"
+
+    def get_context_data(self, **kwargs):
+        context = super(TodoItemCreateView,self).get_context_data(**kwargs)
+        #context['todolists'] = To
