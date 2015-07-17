@@ -106,9 +106,9 @@ STATICFILES_DIRS = (
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.mail.yahoo.com'
 EMAIL_PORT = 587
-EMAIL_HOST_USER = 'sanju_massal_326@yahoo.com'
-EMAIL_HOST_PASSWORD = 'Fakeaccount12'
-DEFAULT_FROM_EMAIL = 'sanju_massal_326@yahoo.com'
-DEFAULT_TO_EMAIL = 'sanju_massal_326@yahoo.com'
+EMAIL_HOST_USER = ''
+EMAIL_HOST_PASSWORD = ''
+DEFAULT_FROM_EMAIL = ''
+DEFAULT_TO_EMAIL = ''
 
 HOSTNAME = 'http://127.0.0.1:8000'
