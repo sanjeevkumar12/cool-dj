@@ -52,7 +52,8 @@ class User(AbstractBaseUser,PermissionsMixin):
         return '{0} {1}'.format(self.firstname,self.lastname)
     def get_short_name(self):
         return '{0}'.format([self.firstname,])
-
+    def __unicode__(self):
+        return '{0} {1}'.format(self.firstname,self.lastname)
 
     def save(self,force_insert=False, force_update=False, using=None,update_fields=None):
         if not self.slug:

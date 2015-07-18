@@ -78,6 +78,3 @@ class TodoItem(models.Model):
 
     class Meta:
         unique_together = ('title','todolist')
-
-    def __str__(self):
-        return self.title

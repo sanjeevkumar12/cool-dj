@@ -36,6 +36,7 @@ MEDIA_URL = '/media/'
 
 INSTALLED_APPS = (
     'django.contrib.auth',
+    'bootstrap_admin',
     'django.contrib.admin',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
