@@ -94,7 +94,7 @@ class User(AbstractBaseUser,PermissionsMixin):
 
     USERNAME_FIELD = 'email'
     class Meta:
-        verbose_name = __('user')
-        verbose_name_plural = __('users')
+        verbose_name = __('User')
+        verbose_name_plural = __('Users')
         app_label = 'accounts'
 

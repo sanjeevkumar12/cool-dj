@@ -13,7 +13,7 @@ class Category(models.Model):
     description = models.TextField(__("Category Detail"),max_length=500,blank=True,default='')
     created = models.DateTimeField(__("Created On"),auto_now_add=True)
     modified = models.DateTimeField(__("Modified On"),auto_now=True)
-    slug = models.SlugField(db_index= True)
+    slug = models.SlugField(db_index= True,blank=True)
 
     def save(self, *args, **kwargs):
         if not self.slug:
@@ -23,6 +23,8 @@ class Category(models.Model):
     def __unicode__(self):
         return self.title
 
+    def __str__(self):
+        return self.title
     def get_absolute_url(self):
         return reverse_lazy('blog:blogdetail', kwargs={"slug": self.slug})
 
@@ -45,6 +47,9 @@ class Tag(models.Model):
         super(Tag,self).save(*args, **kwargs)
 
     def __unicode__(self):
+        return self.title
+
+    def __str__(self):
         return self.title
 
     class Meta:
@@ -107,6 +112,9 @@ class Post(models.Model):
     def __unicode__(self):
         return self.title
 
+    def __str__(self):
+        return self.title
+
     def markpublish(self):
         self.status = Post.PUBLISHED
         self.publisheddate = timezone.now()
@@ -149,3 +157,12 @@ class PostMetta(models.Model):
         db_table ="blog_post_metatags"
         verbose_name = __("Post Meta Tags")
         verbose_name_plural = __("Post Meta Tags")
+
+
+class PostComment(models.Model):
+    post = models.ForeignKey(Post)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL)
+    content = models.TextField(__("Comment"))
+    useripaddress = models.IPAddressField(default=False,blank=True)
+    approved = models.BooleanField(default=False,blank=True)
+    created = models.DateTimeField(auto_now_add=True)
