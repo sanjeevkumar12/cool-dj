@@ -104,8 +104,10 @@ class Post(models.Model):
     commentenabled = models.BooleanField(default= True)
     category = models.ManyToManyField(Category)
     publisheddate = models.DateTimeField(__("Published Date "),null =True,blank=True)
+    slug = models.SlugField(null=True,blank=True)
     created = models.DateTimeField(__("Created on"),auto_now_add=True)
     modified = models.DateTimeField(__("Last Modified"),auto_now=True)
+
 
     objects = PostManager()
 
@@ -115,6 +117,8 @@ class Post(models.Model):
     def __str__(self):
         return self.title
 
+    def get_absolute_url(self):
+        return reverse_lazy("blog:postsslugdetail", kwargs={"slug": self.slug})
     def markpublish(self):
         self.status = Post.PUBLISHED
         self.publisheddate = timezone.now()

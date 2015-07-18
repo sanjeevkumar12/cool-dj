@@ -1,9 +1,9 @@
 from django.conf.urls import url
-from . import views
+from .views.details import SlugDetailView
 
 from django.conf.urls import url
 from . import views
 urlpatterns = [
-        url(r'detail/(?P<slug>[-\w]+)^$',views.DetailView.as_view(),name='blogdetail'),
+        url(r'detail/(?P<slug>[-\w]+)^$',SlugDetailView.as_view(),name='postsslugdetail'),
 
     ]
