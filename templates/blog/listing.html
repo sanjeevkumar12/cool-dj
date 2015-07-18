@@ -1,0 +1,65 @@
+{% extends "includes/default.html" %}
+
+{% load static from staticfiles %}
+{% block headtitle %}
+    Blog
+{% endblock %}
+{% block pagetitle %}Blog Entries{% endblock %}
+{%block extracss %}
+	 <link href="{%  static "assets/css/todolist.css" %}"  rel="stylesheet"/>
+{% endblock %}
+
+{% block breadcrum %}
+    <ul class="breadcrumb">
+        <li><a href="#">Home</a></li>
+        <li>Blog</li>
+    </ul>
+{% endblock %}
+
+
+{% block content %}
+    <div class="col-md-9">
+        <div class="alert alert-warning">
+            <div class="thumbnails clearfix">
+                {% for item in object_list %}
+                    <div class="thumbnail pull-left col-md-12">
+                        <div class="col-md-8">
+                            <h4><strong><a href="{% url 'blog:postslugdetail' item.slug %}">Title of the post</a></strong></h4>
+                        </div>
+                        <div class="col-md-12">
+                            <p class="text-info">
+                                {{ item.content |truncatechars:200 }}
+                                <br/>
+                                <br/>
+                                <a href="{% url 'blog:postslugdetail' item.slug %}">Read More...</a>
+                            </p>
+                            <span class="text-muted"></span>
+                            <p>Tags:
+                                <a href="#"><span class="label label-info">Snipp</span></a>
+                                <a href="#"><span class="label label-info">Bootstrap</span></a>
+                                <a href="#"><span class="label label-info">UI</span></a>
+                                <a href="#"><span class="label label-info">growth</span></a>
+                                | <i class="icon-user"></i> <a href="#">{{ item.author.get_short_name }}</a>
+                                | <i class="icon-calendar"></i> {{ item.publisheddate }}
+                                | <i class="icon-comment"></i> <a href="#">{{ item.comment_count }}</a>
+                            </p>
+
+
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+            <div class="alert alert-warning">
+                <h3>Category</h3>
+                <ul>
+                    {% for category in categories %}
+
+                        <li><a href="{% url "blog:categorydetail" category.slug %}">{{ category.title }}({{ category.liveposts }})</a> </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+{% endblock %}

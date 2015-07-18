@@ -51,7 +51,7 @@ class User(AbstractBaseUser,PermissionsMixin):
     def __str__(self):
         return '{0} {1}'.format(self.firstname,self.lastname)
     def get_short_name(self):
-        return '{0}'.format([self.firstname,])
+        return '{0}'.format(self.firstname,)
     def __unicode__(self):
         return '{0} {1}'.format(self.firstname,self.lastname)
 

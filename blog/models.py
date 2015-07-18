@@ -110,6 +110,11 @@ class Post(models.Model):
 
 
     objects = PostManager()
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.title)
+        super(Post,self).save(*args, **kwargs)
+
 
     def __unicode__(self):
         return self.title
@@ -118,7 +123,7 @@ class Post(models.Model):
         return self.title
 
     def get_absolute_url(self):
-        return reverse_lazy("blog:postsslugdetail", kwargs={"slug": self.slug})
+        return reverse_lazy("blog:postslugdetail", kwargs={"slug": self.slug})
     def markpublish(self):
         self.status = Post.PUBLISHED
         self.publisheddate = timezone.now()
