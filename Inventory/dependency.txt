@@ -1,1 +1,3 @@
 pip install bootstrap-admin
+pip install django-markdown
+pip install django-endless-pagination

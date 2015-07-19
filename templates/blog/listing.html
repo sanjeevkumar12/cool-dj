@@ -1,5 +1,6 @@
-{% extends "includes/default.html" %}
-
+{% extends "includes/blog.html" %}
+{% load django_markdown %}
+{% load endless %}
 {% load static from staticfiles %}
 {% block headtitle %}
     Blog
@@ -18,48 +19,53 @@
 
 
 {% block content %}
-    <div class="col-md-9">
-        <div class="alert alert-warning">
-            <div class="thumbnails clearfix">
-                {% for item in object_list %}
-                    <div class="thumbnail pull-left col-md-12">
-                        <div class="col-md-8">
-                            <h4><strong><a href="{% url 'blog:postslugdetail' item.slug %}">Title of the post</a></strong></h4>
+                {% paginate object_list %}
+                {% for post in object_list %}
+                <div class="blog-item">
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-2 text-center">
+                                <div class="entry-meta">
+                                    <span id="publish_date">{{ post.publisheddate }}</span>
+                                    <span><i class="fa fa-user"></i> <a href="#">{{ post.author.get_short_name }}</a></span>
+                                    <span><i class="fa fa-comment"></i> <a href="blog-item.html#comments">{{ post.comment_count }}</a></span>
+                                    <span><i class="fa fa-heart"></i><a href="#">56 Likes</a></span>
+                                </div>
+                            </div>
+
+                            <div class="col-xs-12 col-sm-10 blog-content">
+                                <!--a href="#"><img class="img-responsive img-blog" src="images/blog/blog1.jpg" width="100%" alt="" /></a-->
+                                <h2><a href="{% url "blog:postslugdetail" post.slug %}">{{ post.title }}</a></h2>
+                                <h3>{{ post.content|truncatechars:200|markdown }}</h3>
+                                <a class="btn btn-primary readmore" href="{% url "blog:postslugdetail" post.slug %}">Read More <i class="fa fa-angle-right"></i></a>
+                            </div>
                         </div>
-                        <div class="col-md-12">
-                            <p class="text-info">
-                                {{ item.content |truncatechars:200 }}
-                                <br/>
-                                <br/>
-                                <a href="{% url 'blog:postslugdetail' item.slug %}">Read More...</a>
-                            </p>
-                            <span class="text-muted"></span>
-                            <p>Tags:
-                                <a href="#"><span class="label label-info">Snipp</span></a>
-                                <a href="#"><span class="label label-info">Bootstrap</span></a>
-                                <a href="#"><span class="label label-info">UI</span></a>
-                                <a href="#"><span class="label label-info">growth</span></a>
-                                | <i class="icon-user"></i> <a href="#">{{ item.author.get_short_name }}</a>
-                                | <i class="icon-calendar"></i> {{ item.publisheddate }}
-                                | <i class="icon-comment"></i> <a href="#">{{ item.comment_count }}</a>
-                            </p>
-
-
-                        </div>
-                    </div>
-                {% endfor %}
-            </div>
-        </div>
-    </div>
-    <div class="col-md-3">
-            <div class="alert alert-warning">
-                <h3>Category</h3>
-                <ul>
-                    {% for category in categories %}
-
-                        <li><a href="{% url "blog:categorydetail" category.slug %}">{{ category.title }}({{ category.liveposts }})</a> </li>
+                    </div><!--/.blog-item-->
                     {% endfor %}
-                </ul>
-            </div>
-        </div>
+                    {% get_pages %}
+                    {% if pages.paginated %}
+
+                            {{ pages }}
+
+                    {% endif %}
+                    {% if is_paginated %}
+                        {% get_pages %}
+                        --{{ pages.endless.page }}--
+                        <ul class="pagination pagination-lg">
+                            {% if page_obj.has_previous %}
+                                <li> <a href="?page={{ page_obj.previous_page_number }}"><i class="fa fa-long-arrow-left"></i>Previous Page</a></li>
+                            {% endif %}
+
+                            <li class="active"><a href="#">1</a></li>
+                            <li><a href="#">2</a></li>
+                            <li><a href="#">3</a></li>
+                            <li><a href="#">4</a></li>
+                            <li><a href="#">5</a></li>
+                            {% if page_obj.has_next %}
+                                <li><a href="?page={{ page_obj.next_page_number }}">Next Page<i class="fa fa-long-arrow-right"></i></a></li>
+                            {% endif %}
+                        </ul><!--/.pagination-->
+                    {% endif %}
+
+
+                </div><!--/.col-md-8-->
 {% endblock %}

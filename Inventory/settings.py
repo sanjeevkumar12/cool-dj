@@ -42,6 +42,8 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'debug_toolbar',
+    'django_markdown',
+    'endless_pagination',
     'accounts',
     'todo',
     'blog',
@@ -114,3 +116,13 @@ DEFAULT_TO_EMAIL = 'sanju_massal_326@yahoo.com'
 
 HOSTNAME = 'http://127.0.0.1:8000'
 
+from django.conf.global_settings import TEMPLATE_CONTEXT_PROCESSORS
+TEMPLATE_CONTEXT_PROCESSORS += (
+    'django.core.context_processors.request',
+)
+
+ENDLESS_PAGINATION_PREVIOUS_LABEL = "Previous"
+ENDLESS_PAGINATION_NEXT_LABEL = "Next"
+ENDLESS_PAGINATION_FIRST_LABEL = "First"
+ENDLESS_PAGINATION_LAST_LABEL = "Last"
+ENDLESS_PAGINATION_DEFAULT_CALLABLE_EXTREMES = 5

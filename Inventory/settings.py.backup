@@ -36,15 +36,17 @@ MEDIA_URL = '/media/'
 
 INSTALLED_APPS = (
     'django.contrib.auth',
-    'bootstrap_admin',
     'django.contrib.admin',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'debug_toolbar',
+    'django_markdown',
+    'endless_pagination',
     'accounts',
     'todo',
+    'blog',
 )
 AUTH_USER_MODEL = 'accounts.User'
 
@@ -105,11 +107,22 @@ STATICFILES_DIRS = (
 )
 
 EMAIL_USE_TLS = True
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 587
+EMAIL_HOST = ' '
+EMAIL_PORT =  ''
 EMAIL_HOST_USER = ' '
-EMAIL_HOST_PASSWORD = ''
-DEFAULT_FROM_EMAIL = ' '
-DEFAULT_TO_EMAIL = ' '
+EMAIL_HOST_PASSWORD = ' '
+DEFAULT_FROM_EMAIL = ' @yahoo.com'
+DEFAULT_TO_EMAIL = ' @yahoo.com'
 
 HOSTNAME = 'http://127.0.0.1:8000'
+
+from django.conf.global_settings import TEMPLATE_CONTEXT_PROCESSORS
+TEMPLATE_CONTEXT_PROCESSORS += (
+    'django.core.context_processors.request',
+)
+
+ENDLESS_PAGINATION_PREVIOUS_LABEL = "Previous"
+ENDLESS_PAGINATION_NEXT_LABEL = "Next"
+ENDLESS_PAGINATION_FIRST_LABEL = "First"
+ENDLESS_PAGINATION_LAST_LABEL = "Last"
+ENDLESS_PAGINATION_DEFAULT_CALLABLE_EXTREMES = 5

@@ -12,7 +12,6 @@ class BlogMixin(TemplateResponseMixin):
 
 class PostList(BlogMixin,ListView):
     model = Post
-    paginate_by = 10
     template_name = "blog/listing.html"
     def get_queryset(self):
         return Post.objects.published().select_related().annotate(comment_count=Count('postcomment'))

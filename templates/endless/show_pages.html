@@ -1,0 +1,10 @@
+<ul class="pagination pagination-lg">
+{% for page in pages %}
+    {% if page %}
+        <li {% if page.is_current %} class="active" {% endif %}><a href="{{ page.path }}" rel="{{ querystring_key }}{% if add_nofollow %} nofollow{% endif %}" class="endless_page_link">{{ page.label|safe }}</a></li>
+    {% endif %}
+    {% if not page %}
+        <li><a href="javascript:void(0)">.....</a></li>
+    {% endif %}
+{% endfor %}
+</ul>
