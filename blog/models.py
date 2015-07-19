@@ -39,7 +39,7 @@ class Tag(models.Model):
     description = models.TextField(__("Tag description"),max_length=400,blank=True,default='')
     created = models.DateTimeField(__("Created on"),auto_now_add=True)
     modified = models.DateTimeField(__("Last modified"),auto_now=True)
-    slug = models.SlugField(db_index=True)
+    slug = models.SlugField(db_index=True,blank=True)
 
     def save(self, *args, **kwargs):
         if not self.slug:
@@ -103,6 +103,7 @@ class Post(models.Model):
     author = models.ForeignKey(settings.AUTH_USER_MODEL)
     commentenabled = models.BooleanField(default= True)
     category = models.ManyToManyField(Category)
+    tags = models.ManyToManyField(Tag)
     publisheddate = models.DateTimeField(__("Published Date "),null =True,blank=True)
     slug = models.SlugField(null=True,blank=True)
     created = models.DateTimeField(__("Created on"),auto_now_add=True)
@@ -123,7 +124,7 @@ class Post(models.Model):
         return self.title
 
     def get_absolute_url(self):
-        return reverse_lazy("blog:postslugdetail", kwargs={"slug": self.slug})
+        return reverse_lazy("postslugdetail", kwargs={"slug": self.slug})
     def markpublish(self):
         self.status = Post.PUBLISHED
         self.publisheddate = timezone.now()
@@ -170,7 +171,9 @@ class PostMetta(models.Model):
 
 class PostComment(models.Model):
     post = models.ForeignKey(Post)
-    user = models.ForeignKey(settings.AUTH_USER_MODEL)
+    email = models.EmailField()
+    user = models.ForeignKey(settings.AUTH_USER_MODEL,default=None,null=True,blank=True)
+    name = models.CharField(__("Posted By"),max_length=240)
     content = models.TextField(__("Comment"))
     useripaddress = models.IPAddressField(default=False,blank=True)
     approved = models.BooleanField(default=False,blank=True)
