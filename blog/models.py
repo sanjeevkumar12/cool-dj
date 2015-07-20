@@ -73,6 +73,8 @@ class PostManager(models.Manager):
         return self.get_queryset().filter(status=3)
     def author(self,owner):
         return self.get_queryset().filter(status=2,author=owner)
+    def recent(self):
+        return self.get_queryset().filter(status=2,publisheddate__lte=timezone.now())
 
 class Post(models.Model):
     DRAFT = 0
@@ -98,7 +100,7 @@ class Post(models.Model):
     title = models.CharField(__("Post title"),max_length=240,db_index=True,unique=True)
     shortdescription = models.TextField(__("Short Introduction"),max_length=400,)
     content = models.TextField(__("Post HTML content"))
-    status = models.SmallIntegerField(__("Post publish status"),choices=STATUS,default=DRAFT)
+    status = models.SmallIntegerField(__("Post Status"),choices=STATUS,default=DRAFT)
     accesstype = models.SmallIntegerField(__("Post public access "),choices=ACCESS,default=PUBLIC)
     author = models.ForeignKey(settings.AUTH_USER_MODEL)
     commentenabled = models.BooleanField(default= True)

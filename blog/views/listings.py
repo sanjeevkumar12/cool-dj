@@ -1,14 +1,7 @@
 from ..models import Post,Category,PostComment
 from django.views.generic import ListView
-from django.views.generic.base import TemplateResponseMixin
 from django.db.models import Count
-
-class BlogMixin(TemplateResponseMixin):
-    def render_to_response(self, context, **response_kwargs):
-        categories = Category.objects.extra(select={'liveposts':"SELECT count(*) from blog_post_category LEFT JOIN blog_post ON (blog_post.id = blog_post_category.post_id) WHERE blog_post.status = 2 AND blog_post_category.category_id = blog_category.id"}).all()
-        context['categories'] = categories
-        return super(BlogMixin,self).render_to_response(context, **response_kwargs)
-
+from .mixin import BlogMixin
 
 class PostList(BlogMixin,ListView):
     model = Post

@@ -2,20 +2,6 @@
 {% load django_markdown %}
 {% load endless %}
 {% load static from staticfiles %}
-{% block headtitle %}
-    Blog
-{% endblock %}
-{% block pagetitle %}Blog Entries{% endblock %}
-{%block extracss %}
-	 <link href="{%  static "assets/css/todolist.css" %}"  rel="stylesheet"/>
-{% endblock %}
-
-{% block breadcrum %}
-    <ul class="breadcrumb">
-        <li><a href="#">Home</a></li>
-        <li>Blog</li>
-    </ul>
-{% endblock %}
 
 
 {% block content %}
