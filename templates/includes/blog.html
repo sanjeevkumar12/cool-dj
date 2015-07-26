@@ -98,30 +98,14 @@
                         <div class="widget tags">
                             <h3>Tag Cloud</h3>
                             <ul class="tag-cloud">
-                                <li><a class="btn btn-xs btn-primary" href="#">Apple</a></li>
-                                <li><a class="btn btn-xs btn-primary" href="#">Barcelona</a></li>
-                                <li><a class="btn btn-xs btn-primary" href="#">Office</a></li>
-                                <li><a class="btn btn-xs btn-primary" href="#">Ipod</a></li>
-                                <li><a class="btn btn-xs btn-primary" href="#">Stock</a></li>
-                                <li><a class="btn btn-xs btn-primary" href="#">Race</a></li>
-                                <li><a class="btn btn-xs btn-primary" href="#">London</a></li>
-                                <li><a class="btn btn-xs btn-primary" href="#">Football</a></li>
-                                <li><a class="btn btn-xs btn-primary" href="#">Porche</a></li>
-                                <li><a class="btn btn-xs btn-primary" href="#">Gadgets</a></li>
-                            </ul>
-                        </div><!--/.tags-->
 
-                        <div class="widget blog_gallery">
-                            <h3>Our Gallery</h3>
-                            <ul class="sidebar-gallery">
-                                <li><a href="#"><img src="images/blog/gallery1.png" alt="" /></a></li>
-                                <li><a href="#"><img src="images/blog/gallery2.png" alt="" /></a></li>
-                                <li><a href="#"><img src="images/blog/gallery3.png" alt="" /></a></li>
-                                <li><a href="#"><img src="images/blog/gallery4.png" alt="" /></a></li>
-                                <li><a href="#"><img src="images/blog/gallery5.png" alt="" /></a></li>
-                                <li><a href="#"><img src="images/blog/gallery6.png" alt="" /></a></li>
+                                {% for tag in tags %}
+                                    <li><a class="btn btn-xs btn-primary" href="#">{{ tag.title }}</a></li>
+                                {% endfor %}
+
+
                             </ul>
-                        </div><!--/.blog_gallery-->
+                        </div>
                     </aside>
             </div><!--/.row-->
         </div>
@@ -151,5 +135,7 @@
     <script src="{%  static "blog/js/jquery.isotope.min.js" %}"></script>
     <script src="{% static "blog/js/main.js" %}"></script>
     <script src="{%  static "blog/js/wow.min.js" %}"></script>
+    {% block extrajs %}{% endblock %}
+    <script src="{%  static "blog/js/general.js" %}"></script>
 </body>
 </html>

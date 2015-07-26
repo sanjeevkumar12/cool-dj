@@ -1,13 +1,14 @@
 from django.views.generic import DetailView,ListView
 from ..models import Post,Category
 from .mixin import BlogMixin
+from django.db.models import Count
 class SlugDetailView(BlogMixin,DetailView):
     model = Post
     template_name = 'blog/post-detail.html'
 
     def get_object(self, queryset=None):
         try:
-            return Post.objects.published().filter(slug=self.kwargs.get('slug')).get()
+            return Post.objects.published().filter(slug=self.kwargs.get('slug')).select_related().annotate(comment_count=Count('postcomment')).get()
         except Post.DoesNotExist:
             return None
     def render_to_response(self, context, **response_kwargs):
