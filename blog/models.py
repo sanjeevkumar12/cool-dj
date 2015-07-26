@@ -136,13 +136,18 @@ class Post(models.Model):
 
     def previous(self):
         try:
-            return self.objects.published().filter(publisheddate__lte = timezone.now())[0]
+            return Post.objects.published().filter(publisheddate__lte = self.publisheddate).exclude(pk = self.pk).order_by('-publisheddate')[0]
         except self.DoesNotExist:
             return None
+        except IndexError:
+            return None
+
     def next(self):
         try:
-            return self.objects.published().filter(publisheddate__gte = timezone.now())[0]
+            return Post.objects.published().filter(publisheddate__gte = self.publisheddate).exclude(pk = self.pk).order_by('-publisheddate')[0]
         except self.DoesNotExist:
+            return None
+        except IndexError:
             return None
 
     @property

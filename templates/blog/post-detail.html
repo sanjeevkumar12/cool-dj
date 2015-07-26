@@ -66,7 +66,19 @@
                                 <p class="lead">{{ object.author.user_bio }}</p>
                             </div>
                         </div> 
-                        
+                        <div class="media" style="margin-top:5em">
+
+                        {% with previous=object.previous %}
+                            {% if previous %}
+                                <a class="btn btn-primary readmore" href="{% url 'postslugdetail' previous.slug  %}"><i class="fa fa-angle-double-left"></i> {{ previous.title }} </a>
+                            {% endif %}
+                        {% endwith %}
+                        {% with next=object.next %}
+                            {% if next %}
+                                <a class="btn btn-primary readmore pull-right" href="{% url 'postslugdetail' next.slug  %}">{{ next.title }} <i class="fa fa-angle-double-right"></i></a>
+                            {% endif %}
+                        {% endwith %}
+                        </div>
                         <h1 id="comments_title">{{ object.postcomment_set.count }} Comments</h1>
 
                         {% for comment in  object.postcomment_set.all  %}
