@@ -3,7 +3,8 @@ from .models import Post,BlogConfig,Category,Tag
 from django_markdown.widgets import AdminMarkdownWidget
 from django.db.models import TextField
 from django_markdown.admin import MarkdownModelAdmin
-
+from django.forms import forms
+from django.db import models
 
 from django.contrib.admin import SimpleListFilter
 
@@ -22,8 +23,8 @@ class BlogPostAdmin(MarkdownModelAdmin):
     list_display = ("title",'created','modified','status',)
     prepopulated_fields = {"slug": ("title",)}
     list_filter = (CategoryListFilter, 'status', )
-    formfield_overrides = {TextField: {'widget': AdminMarkdownWidget}}
     filter_vertical  = ('category','tags',)
+    formfield_overrides = { models.TextField: {'widget': forms.Textarea(attrs={'class':'ckeditor'})}, }
     fieldsets = [
                     (None,{'fields':['title','slug',]}),
                     ('Blog Content',{'fields':['shortdescription','content',]}),
@@ -31,6 +32,8 @@ class BlogPostAdmin(MarkdownModelAdmin):
                     ('Additional Inf',{'fields':['category','tags','author',]}),
 
             ]
+    class Media:
+        js = ('assets/ckeditor/ckeditor.js',)
 
     actions = ['make_published','make_archived','make_pending', ]
 
