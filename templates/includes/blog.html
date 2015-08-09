@@ -44,8 +44,9 @@
                     {% endblock %}
                     <aside class="col-md-4">
                         <div class="widget search">
-                            <form role="form">
-                                    <input type="text" class="form-control search_box" autocomplete="off" placeholder="Search Here">
+                            <form role="form" method="post" action="{% url "blog:startseacrh" %}">
+                                {% csrf_token %}
+                                <input type="text" name="search" class="form-control search_box" autocomplete="off" placeholder="Search Here">
                             </form>
                         </div><!--/.search-->
 
@@ -75,7 +76,7 @@
                                 <div class="col-sm-6">
                                     <ul class="blog_category">
                                         {% for category in categories %}
-                                            <li><a href="{% url "blog:categorydetail" category.slug %}">{{ category.title }}<span class="badge">{{ category.liveposts }}</span></a> </li>
+                                            <li><a href="{% url "categorydetail" category.slug %}">{{ category.title }}<span class="badge">{{ category.liveposts }}</span></a> </li>
                                         {% endfor %}
                                     </ul>
                                 </div>
@@ -100,7 +101,7 @@
                             <h3>Tag Cloud</h3>
                             <ul class="tag-cloud">
                                 {% for tag in tags %}
-                                    <li><a class="btn btn-xs btn-primary" href="#">{{ tag.title }}</a></li>
+                                    <li><a class="btn btn-xs btn-primary" href="{% url "tagdetail" tag.slug %}">{{ tag.title }}</a></li>
                                 {% endfor %}
                             </ul>
                         </div>

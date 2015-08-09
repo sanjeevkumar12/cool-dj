@@ -67,4 +67,3 @@ admin.site.register(Post,BlogPostAdmin)
 admin.site.register(Category)
 admin.site.register(BlogConfig)
 admin.site.register(Tag)
-
