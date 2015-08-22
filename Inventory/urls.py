@@ -14,6 +14,10 @@ urlpatterns = patterns('',
     url(r'^category/(?P<slug>[-\w]+)',CategoryDetailView.as_view(),name='categorydetail'),
     url(r'^tags/(?P<slug>[-\w]+)',TagDetailView.as_view(),name='tagdetail'),
     url(r'^(?P<slug>[-\w]+)$',SlugDetailView.as_view(),name='postslugdetail'),
+    url(r'^(?P<year>\d{4})/(?P<month>\w+)/(?P<day>\d{1,2})/(?P<slug>[-\w]+)/$',SlugDetailView.as_view(), name='archive_post_detail'),
+    url(r'^(?P<year>\d{4})/$', view='post_archive_year', name='post_archive_year'),
+    url(r'^(?P<year>\d{4})/(?P<month>\w+)/$', view='post_archive_month', name='post_archive_month'),
+    url(r'^(?P<year>\d{4})/(?P<month>\w{3})/(?P<day>\d{1,2})/$', view='post_archive_day', name='post_archive_day'),
 )
 if settings.DEBUG:
     urlpatterns += patterns('',

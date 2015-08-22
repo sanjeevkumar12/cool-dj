@@ -4,7 +4,7 @@ from django.core.urlresolvers import reverse_lazy
 from django.utils.translation import ugettext_lazy as __
 from django.conf import settings
 from django.utils import timezone
-
+from calendar import month_name
 class BlogConfig(models.Model):
     commentson = models.BooleanField(default=True)
 
@@ -126,7 +126,7 @@ class Post(models.Model):
         return self.title
 
     def get_absolute_url(self):
-        return reverse_lazy("postslugdetail", kwargs={"slug": self.slug})
+        return reverse_lazy("archive_post_detail", kwargs={'year':self.publisheddate.year,'month':self.publisheddate.strftime('%B'),'day':self.created.day,"slug": self.slug})
     def markpublish(self):
         self.status = Post.PUBLISHED
         self.publisheddate = timezone.now()

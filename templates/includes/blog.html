@@ -59,7 +59,7 @@
                                             <img src="{% static "blog/images/posticon.png" %}" alt=""  />
                                             <p><a href="{% url "postslugdetail" recentpost.slug %}"> {{ recentpost.title }}</a></p>
                                             <div class="entry-meta small muted">
-                                                <span>By <a href="#">{{ recentpost.author.get_short_name }}</a></span <span>
+                                                <span>By <a href="#">{{ recentpost.author.get_short_name }}</a></span>
                                             </div>
                                         </div>
                                     {% endfor %}
@@ -88,10 +88,18 @@
                             <div class="row">
                                 <div class="col-sm-12">
                                     <ul class="blog_archieve">
-                                        <li><a href="#"><i class="fa fa-angle-double-right"></i> December 2013 <span class="pull-right">(97)</span></a></li>
-                                        <li><a href="#"><i class="fa fa-angle-double-right"></i> November 2013 <span class="pull-right">(32)</a></li>
-                                        <li><a href="#"><i class="fa fa-angle-double-right"></i> October 2013 <span class="pull-right">(19)</a></li>
-                                        <li><a href="#"><i class="fa fa-angle-double-right"></i> September 2013 <span class="pull-right">(08)</a></li>
+                                    {% for yeararchive in list_events %}
+
+                                        {% for year , montharchive in yeararchive.items %}
+                                            {% for month , postlists in montharchive.items %}
+                                                {% if postlists %}
+                                                    <li><a href="{% url "post_archive_month" year postlists.0.created|date:'F' %}"><i class="fa fa-angle-double-right"></i> {{postlists.0.created|date:"F"}} {{ year }} <span class="pull-right"> ({{postlists|length}}) </span></a></li>
+                                                {% endif %}
+
+                                            {% endfor %}
+                                        {% endfor %}
+
+                                    {% endfor %}
                                     </ul>
                                 </div>
                             </div>
@@ -107,6 +115,7 @@
                         </div>
                     </aside>
             </div><!--/.row-->
+        </div>
         </div>
     </section><!--/#blog-->
 

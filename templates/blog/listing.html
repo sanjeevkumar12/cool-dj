@@ -33,7 +33,7 @@
 
                             <div class="col-xs-12 col-sm-10 blog-content">
                                 <!--a href="#"><img class="img-responsive img-blog" src="images/blog/blog1.jpg" width="100%" alt="" /></a-->
-                                <h2><a href="{% url "postslugdetail" post.slug %}">{{ post.title }}</a></h2>
+                                <h2><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h2>
                                 <h3>{{ post.content|truncatechars:200 }}</h3>
                                 <a class="btn btn-primary readmore" href="{% url "postslugdetail" post.slug %}">Read More <i class="fa fa-angle-right"></i></a>
                             </div>

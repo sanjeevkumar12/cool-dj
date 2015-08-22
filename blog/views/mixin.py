@@ -1,5 +1,6 @@
 from django.views.generic.base import TemplateResponseMixin
 from ..models import Category,Post,Tag
+from .viewhelpers import Archive
 
 
 
@@ -9,4 +10,5 @@ class BlogMixin(TemplateResponseMixin):
         context['categories'] = categories
         context['recentposts'] = Post.objects.recent().select_related()[:5]
         context['tags'] = Tag.objects.all()
+        context['list_events'] = Archive.getarchivelist()
         return super(BlogMixin,self).render_to_response(context, **response_kwargs)
