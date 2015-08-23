@@ -4,6 +4,7 @@ from django.contrib import admin
 from blog.views.details import SlugDetailView
 from blog.views.listings import PostList
 from blog.views.details import CategoryDetailView,TagDetailView
+from blog.views import archive as ArchiveViews
 urlpatterns = patterns('',
     url(r'^$', PostList.as_view(), name='home'),
     url(r'^accounts/todo/',include('todo.urls',namespace='todo')),
@@ -15,9 +16,9 @@ urlpatterns = patterns('',
     url(r'^tags/(?P<slug>[-\w]+)',TagDetailView.as_view(),name='tagdetail'),
     url(r'^(?P<slug>[-\w]+)$',SlugDetailView.as_view(),name='postslugdetail'),
     url(r'^(?P<year>\d{4})/(?P<month>\w+)/(?P<day>\d{1,2})/(?P<slug>[-\w]+)/$',SlugDetailView.as_view(), name='archive_post_detail'),
-    url(r'^(?P<year>\d{4})/$', view='post_archive_year', name='post_archive_year'),
-    url(r'^(?P<year>\d{4})/(?P<month>\w+)/$', view='post_archive_month', name='post_archive_month'),
-    url(r'^(?P<year>\d{4})/(?P<month>\w{3})/(?P<day>\d{1,2})/$', view='post_archive_day', name='post_archive_day'),
+    url(r'^(?P<year>\d{4})/$',ArchiveViews.YearlyView.as_view(), name='post_archive_year'),
+    url(r'^(?P<year>\d{4})/(?P<month>\w+)/$',ArchiveViews.MonthlyView.as_view(), name='post_archive_month'),
+    url(r'^(?P<year>\d{4})/(?P<month>\w{3})/(?P<day>\d{1,2})/$',ArchiveViews.DateView.as_view(), name='post_archive_day'),
 )
 if settings.DEBUG:
     urlpatterns += patterns('',
