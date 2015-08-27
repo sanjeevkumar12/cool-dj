@@ -1,0 +1,51 @@
+{% extends "includes/blog.html" %}
+{% load django_markdown %}
+{% load endless %}
+{% load static from staticfiles %}
+{% block headtitle %}
+    Blog
+{% endblock %}
+{% block pagetitle %}Blog Entries{% endblock %}
+{%block extracss %}
+	 <link href="{%  static "assets/css/todolist.css" %}"  rel="stylesheet"/>
+{% endblock %}
+
+{% block breadcrum %}
+    <ul class="breadcrumb">
+        <li><a href="#">Home</a></li>
+        <li>Blog</li>
+    </ul>
+{% endblock %}
+
+{% block content %}
+                {% paginate object_list %}
+                {% for post in object_list %}
+                <div class="blog-item">
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-2 text-center">
+                                <div class="entry-meta">
+                                    <span id="publish_date">{{ post.publisheddate|date:"M d, Y"}}</span>
+                                    <span><i class="fa fa-user"></i> <a href="#">{{ post.author.get_short_name }}</a></span>
+                                    <span><i class="fa fa-comment"></i> <a href="blog-item.html#comments">{{ post.comment_count }}</a></span>
+                                    <span><i class="fa fa-heart"></i><a href="#">56 Likes</a></span>
+                                </div>
+                            </div>
+
+                            <div class="col-xs-12 col-sm-10 blog-content">
+                                <!--a href="#"><img class="img-responsive img-blog" src="images/blog/blog1.jpg" width="100%" alt="" /></a-->
+                                <h2><a href="{% url "postslugdetail" post.slug %}">{{ post.title }}</a></h2>
+                                <h3>{{ post.content|truncatechars:200|markdown }}</h3>
+                                <a class="btn btn-primary readmore" href="{% url "postslugdetail" post.slug %}">Read More <i class="fa fa-angle-right"></i></a>
+                            </div>
+                        </div>
+                    </div><!--/.blog-item-->
+                    {% endfor %}
+                    {% get_pages %}
+                    {% if pages.paginated %}
+
+                            {{ pages }}
+
+                    {% endif %}
+
+                </div><!--/.col-md-8-->
+{% endblock %}
