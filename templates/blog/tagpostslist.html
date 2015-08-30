@@ -1,1 +1,5 @@
 {% extends "blog/listing.html" %}
+{% load static from staticfiles %}
+{% block content %}
+          {% include "blog/includes/postlisting.html" with object_list=object_list %}
+{% endblock %}
