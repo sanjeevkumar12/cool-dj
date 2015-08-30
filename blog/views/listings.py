@@ -17,7 +17,7 @@ class TagPostListing(BlogMixin,ListView):
     template_name = "blog/tagpostslist.html"
 
     def get_queryset(self):
-        return Post.objects.filter(tags__slug=self.kwargs['tagslug'])
+        return Post.objects.filter(tags__slug=self.kwargs['tagslug']).select_related().annotate(comment_count=Count('postcomment'))
 
 
 class AjaxCommentList(ListView):

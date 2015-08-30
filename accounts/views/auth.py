@@ -21,6 +21,7 @@ class RegisterView(FormView):
 
 class LogoutView(LoginRequiredMixin,RedirectView):
     url = reverse_lazy('accounts:login')
+    permanent = False
     def get(self, request, *args, **kwargs):
         auth_logout(request)
         return super(LogoutView,self).get(request, *args, **kwargs)

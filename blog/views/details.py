@@ -45,3 +45,12 @@ class TagDetailView(BlogMixin,ListView):
         context = super(TagDetailView,self).get_context_data(**kwargs)
         context.update({'tag':self.tag})
         return context
+
+
+
+
+class AuthorView(BlogMixin,ListView):
+    model = Post
+    template_name = 'blog/listing.html'
+    def get_queryset(self):
+        return Post.objects.published().filter(author__slug=self.kwargs.get('slug')).select_related().annotate(comment_count=Count('postcomment'))

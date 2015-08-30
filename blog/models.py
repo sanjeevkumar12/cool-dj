@@ -186,6 +186,6 @@ class PostComment(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL,default=None,null=True,blank=True)
     name = models.CharField(__("Posted By"),max_length=240)
     content = models.TextField(__("Comment"))
-    useripaddress = models.IPAddressField(default=False,blank=True)
+    useripaddress = models.GenericIPAddressField(default=False,blank=True,null=True)
     approved = models.BooleanField(default=False,blank=True)
     created = models.DateTimeField(auto_now_add=True)

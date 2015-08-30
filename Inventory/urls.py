@@ -3,7 +3,7 @@ from django.conf import settings
 from django.contrib import admin
 from blog.views.details import SlugDetailView
 from blog.views.listings import PostList
-from blog.views.details import CategoryDetailView,TagDetailView
+from blog.views.details import CategoryDetailView,TagDetailView,AuthorView
 from blog.views import archive as ArchiveViews
 urlpatterns = patterns('',
     url(r'^$', PostList.as_view(), name='home'),
@@ -14,6 +14,7 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
     url(r'^category/(?P<slug>[-\w]+)',CategoryDetailView.as_view(),name='categorydetail'),
     url(r'^tags/(?P<slug>[-\w]+)',TagDetailView.as_view(),name='tagdetail'),
+    url(r'^author/(?P<slug>[-\w]+)',AuthorView.as_view(),name='authordetail'),
     url(r'^(?P<slug>[-\w]+)$',SlugDetailView.as_view(),name='postslugdetail'),
     url(r'^(?P<year>\d{4})/(?P<month>\w+)/(?P<day>\d{1,2})/(?P<slug>[-\w]+)/$',SlugDetailView.as_view(), name='archive_post_detail'),
     url(r'^(?P<year>\d{4})/$',ArchiveViews.YearlyView.as_view(), name='post_archive_year'),

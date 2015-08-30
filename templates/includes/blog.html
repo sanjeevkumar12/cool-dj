@@ -59,7 +59,7 @@
                                             <img src="{% static "blog/images/posticon.png" %}" alt=""  />
                                             <p><a href="{{ recentpost.get_absolute_url }}"> {{ recentpost.title }}</a></p>
                                             <div class="entry-meta small muted">
-                                                <span>By <a href="#">{{ recentpost.author.get_short_name }}</a></span>
+                                                <span>By <a href="{% url "authordetail" recentpost.author.slug %}">{{  recentpost.author.get_short_name }}</a></span>
                                             </div>
                                         </div>
                                     {% endfor %}
