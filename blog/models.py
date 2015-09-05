@@ -112,6 +112,8 @@ class Post(models.Model):
     commentenabled = models.BooleanField(__("Comments On for the post."),default= True)
     category = models.ManyToManyField(Category)
     tags = models.ManyToManyField(Tag)
+    metakeywords = models.CharField(__('Meta Keywords for Post'),max_length=244,blank=True,default='')
+    metadescription = models.CharField(__('Meta Description for Post'),max_length=244,blank=True,default='')
     publisheddate = models.DateTimeField(__("Published Date "),null =True,blank=True)
     slug = models.SlugField(null=True,blank=True)
     created = models.DateTimeField(__("Created on"),auto_now_add=True)
@@ -170,19 +172,6 @@ class Post(models.Model):
         verbose_name = __("Post")
         verbose_name_plural = __("Posts")
         get_latest_by = "publisheddate"
-
-
-class PostMetta(models.Model):
-    metakey = models.CharField(max_length=200)
-    metavalue = models.TextField(max_length=500)
-    post = models.ForeignKey(Post)
-
-    class Meta:
-        ordering = ["metakey"]
-        db_table ="blog_post_metatags"
-        verbose_name = __("Post Meta Tags")
-        verbose_name_plural = __("Post Meta Tags")
-
 
 class PostComment(models.Model):
     post = models.ForeignKey(Post)

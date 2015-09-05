@@ -26,6 +26,7 @@ class BlogPostAdmin(MarkdownModelAdmin):
     fieldsets = [
                     (None,{'fields':['title','slug',]}),
                     ('Blog Content',{'fields':['shortdescription','content',]}),
+                    ('Blog Meta Contents',{'fields':['metadescription','metakeywords',]}),
                     ('Blog Settings',{'fields':['accesstype','commentenabled',]}),
                     ('Additional Info',{'fields':['category','tags','author',]}),
 
