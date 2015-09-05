@@ -23,12 +23,6 @@ class CategoryDetailView(BlogMixin,ListView):
         self.category = get_object_or_404(Category.objects.filter(slug=self.kwargs.get('slug')))
         return Post.objects.published().filter(category = self.category).select_related()
 
-
-    def get_object(self,queryset=None):
-        try:
-            return Category.objects.filter(slug=self.kwargs.get('slug'))
-        except Category.DoesNotExist:
-            return None
     def get_context_data(self, **kwargs):
         context = super(CategoryDetailView,self).get_context_data(**kwargs)
         context.update({'category':self.category})

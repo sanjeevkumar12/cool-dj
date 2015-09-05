@@ -13,6 +13,8 @@ class BlogConfig(models.Model):
 class Category(models.Model):
     title = models.CharField(__('Category title'), max_length=200, unique=True, db_index=True)
     description = models.TextField(__("Category Detail"),max_length=500,blank=True,default='')
+    metakeywords = models.CharField(__('Meta Keywords for Category'),max_length=244,blank=True,default='')
+    metadescription = models.CharField(__('Meta Description for Category'),max_length=244,blank=True,default='')
     created = models.DateTimeField(__("Created On"),auto_now_add=True)
     modified = models.DateTimeField(__("Modified On"),auto_now=True)
     slug = models.SlugField(db_index= True,blank=True)
@@ -39,6 +41,8 @@ class Category(models.Model):
 class Tag(models.Model):
     title = models.CharField(__("Tag Name"),max_length=200,db_index=True,unique= True)
     description = models.TextField(__("Tag description"),max_length=400,blank=True,default='')
+    metakeywords = models.CharField(__('Meta Keywords for tag'),max_length=244,blank=True,default='')
+    metadescription = models.CharField(__('Meta Description for tag'),max_length=244,blank=True,default='')
     created = models.DateTimeField(__("Created on"),auto_now_add=True)
     modified = models.DateTimeField(__("Last modified"),auto_now=True)
     slug = models.SlugField(db_index=True,blank=True)
@@ -105,7 +109,7 @@ class Post(models.Model):
     status = models.SmallIntegerField(__("Post Status"),choices=STATUS,default=DRAFT)
     accesstype = models.SmallIntegerField(__("Post public access "),choices=ACCESS,default=PUBLIC)
     author = models.ForeignKey(settings.AUTH_USER_MODEL)
-    commentenabled = models.BooleanField(default= True)
+    commentenabled = models.BooleanField(__("Comments On for the post."),default= True)
     category = models.ManyToManyField(Category)
     tags = models.ManyToManyField(Tag)
     publisheddate = models.DateTimeField(__("Published Date "),null =True,blank=True)

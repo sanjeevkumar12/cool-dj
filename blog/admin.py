@@ -1,7 +1,5 @@
 from django.contrib import admin
 from .models import Post,BlogConfig,Category,Tag
-from django_markdown.widgets import AdminMarkdownWidget
-from django.db.models import TextField
 from django_markdown.admin import MarkdownModelAdmin
 from django.forms import forms
 from django.db import models
@@ -29,7 +27,7 @@ class BlogPostAdmin(MarkdownModelAdmin):
                     (None,{'fields':['title','slug',]}),
                     ('Blog Content',{'fields':['shortdescription','content',]}),
                     ('Blog Settings',{'fields':['accesstype','commentenabled',]}),
-                    ('Additional Inf',{'fields':['category','tags','author',]}),
+                    ('Additional Info',{'fields':['category','tags','author',]}),
 
             ]
     class Media:

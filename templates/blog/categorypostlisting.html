@@ -1,6 +1,10 @@
 {% extends "includes/blog.html" %}
+{% block headtitle %} {{ category.title|title }} : Posts {% endblock %}
+{% block mettags %}
+    <meta name="description" content="{{ category.met }}">
+    <meta name="author" content="">
+{% endblock %}
 {% load static from staticfiles %}
 {% block content %}
-          {% include "blog/includes/postlisting.html" with object_list=object_list %}
-
+    {% include "blog/includes/postlisting.html" with object_list=object_list %}
 {% endblock %}

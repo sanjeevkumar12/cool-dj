@@ -5,8 +5,10 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block  mettags %}
     <meta name="description" content="">
     <meta name="author" content="">
+    {% endblock mettags %}
     <title>My Blog | {% block headtitle %} Its My Tech Blog {% endblock %}</title>
     <!-- BOOTSTRAP CORE STYLE  -->
     <link href="{%  static "blog/css/bootstrap.min.css" %}"  rel="stylesheet"/>
